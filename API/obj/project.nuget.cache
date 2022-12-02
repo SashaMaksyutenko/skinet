@@ -1,10 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "YRXNeoA5ZXABNRwR8gT4B1/LJA5soIiWEo4u87yZqewatUAm+qVWktDJp11+YEleHpctzPbAFdesXzjsI9PGMg==",
+  "dgSpecHash": "mGBZc1w4G/18M2/DwR36u+oGK9ZXwP/TndnxdIbx+pOri0Gv34uvhqc1ppaA8+TH7onhZjn5FiZTbBZfsP49qQ==",
   "success": true,
   "projectFilePath": "/Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/API.csproj",
   "expectedPackageFiles": [
+    "/Users/sashamaksyutenko/.nuget/packages/automapper/9.0.0/automapper.9.0.0.nupkg.sha512",
+    "/Users/sashamaksyutenko/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/7.0.0/automapper.extensions.microsoft.dependencyinjection.7.0.0.nupkg.sha512",
     "/Users/sashamaksyutenko/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/Users/sashamaksyutenko/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
     "/Users/sashamaksyutenko/.nuget/packages/microsoft.data.sqlite.core/7.0.0/microsoft.data.sqlite.core.7.0.0.nupkg.sha512",
     "/Users/sashamaksyutenko/.nuget/packages/microsoft.entityframeworkcore/7.0.0/microsoft.entityframeworkcore.7.0.0.nupkg.sha512",
     "/Users/sashamaksyutenko/.nuget/packages/microsoft.entityframeworkcore.abstractions/7.0.0/microsoft.entityframeworkcore.abstractions.7.0.0.nupkg.sha512",

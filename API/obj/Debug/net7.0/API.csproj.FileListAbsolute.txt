@@ -1,10 +1,13 @@
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/appsettings.Development.json
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/appsettings.json
+/Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/API.staticwebassets.runtime.json
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/API
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/API.deps.json
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/API.runtimeconfig.json
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/API.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/API.pdb
+/Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/AutoMapper.dll
+/Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Humanizer.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.Data.Sqlite.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.dll
