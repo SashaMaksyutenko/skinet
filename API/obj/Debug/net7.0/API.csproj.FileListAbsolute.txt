@@ -9,6 +9,7 @@
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/AutoMapper.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Humanizer.dll
+/Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.Data.Sqlite.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -18,6 +19,11 @@
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Sqlite.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.EntityFrameworkCore.Sqlite.Design.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.Extensions.DependencyModel.dll
+/Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.IdentityModel.Logging.dll
+/Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.dll
+/Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.IdentityModel.Tokens.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Microsoft.OpenApi.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Mono.TextTemplating.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/SQLitePCLRaw.batteries_v2.dll
@@ -27,6 +33,7 @@
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerGen.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/Swashbuckle.AspNetCore.SwaggerUI.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/System.CodeDom.dll
+/Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/System.IdentityModel.Tokens.Jwt.dll
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/runtimes/alpine-arm/native/libe_sqlite3.so
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/runtimes/alpine-arm64/native/libe_sqlite3.so
 /Users/sashamaksyutenko/Documents/C#/Angular_eCommerce/skinet/API/bin/Debug/net7.0/runtimes/alpine-x64/native/libe_sqlite3.so
