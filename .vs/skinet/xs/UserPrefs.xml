@@ -1,36 +1,30 @@
 ﻿<Properties StartupConfiguration="{89E58C52-1F6A-4EA4-9723-0C5374DB07B3}|https">
-  <MonoDevelop.Ide.ItemProperties.API PreferredExecutionTarget="/Applications/Google Chrome.app" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="API/Program.cs">
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Infrastructure/Data/StoreContext.cs">
     <Files>
-      <File FileName="API/Program.cs" Line="11" Column="1" />
+      <File FileName="Core/Specifications/BaseSpecification.cs" Line="38" Column="2" />
+      <File FileName="Core/Specifications/ProductsWithTypesAndBrandsSpecification.cs" Line="1" Column="1" />
+      <File FileName="Infrastructure/Data/SpecificationEvaluator.cs" Line="1" Column="1" />
+      <File FileName="Infrastructure/Data/StoreContext.cs" Line="34" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
-          <Node name="skinet" expanded="True">
-            <Node name="API" expanded="True">
-              <Node name="Properties" expanded="True" />
-            </Node>
-            <Node name="Core" expanded="True">
-              <Node name="Entities" expanded="True" />
-            </Node>
-            <Node name="Infrastructure" expanded="True">
-              <Node name="Data" expanded="True">
-                <Node name="Migrations" expanded="True" />
+          <Node name="skinet">
+            <Node name="Infrastructure">
+              <Node name="Data">
+                <Node name="StoreContext.cs" selected="True" />
               </Node>
             </Node>
           </Node>
         </State>
       </Pad>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
-      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.API PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
 </Properties>
