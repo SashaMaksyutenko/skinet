@@ -16,6 +16,16 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddApplicationServices();
 builder.Services.AddSwaggerDocumentation();
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
+builder.Services.AddCors(opt =>
+{
+    opt.AddPolicy(name: "AllowOrigin", builder =>
+    {
+        builder.WithOrigins("http://localhost:4200")
+           .AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowCredentials();
+    });
+});
 var app = builder.Build();
 var services = builder.Services.BuildServiceProvider();
 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
@@ -30,6 +40,8 @@ catch(Exception ex)
     var logger = loggerFactory.CreateLogger<Program>();
     logger.LogError(ex, "An error occured during migration");
 }  
+
+app.UseCors("AllowOrigin");
 app.UseMiddleware<ExceptionMiddleware>();  
 // Configure the HTTP request pipeline.
 app.UseStatusCodePagesWithReExecute("/errors/{0}");
@@ -41,3 +53,4 @@ app.UseSwaggerDocumentation();
 app.MapControllers();
 app.Run();
 
+//did i mess up the cors bit i though that this is right 
