@@ -13,7 +13,6 @@ export class PagingHeaderComponent implements OnInit {
 
 
   ngOnInit(){
-    throw new Error('Method not implemented.');
   }
 
 }
