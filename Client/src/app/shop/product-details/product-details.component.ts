@@ -4,7 +4,6 @@ import { ShopService } from '../shop.service';
 import { catchError, Subscription, throwError } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 
-
 @Component({
   selector: 'app-product-details',
   templateUrl: './product-details.component.html',
@@ -19,6 +18,6 @@ export class ProductDetailsComponent implements OnInit {
     this.loadProduct();
   }
   loadProduct(){
-    this.loadProd=this.shopService.getProduct(+this.activateRoute.snapshot.paramMap.get('id')!).subscribe(product=>{this.product=product;})
+    this.loadProd=this.shopService.getProduct( +this.activateRoute.snapshot.paramMap.get('id')!).subscribe(product=>{this.product=product;})
   }
 }
