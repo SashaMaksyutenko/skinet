@@ -5,11 +5,12 @@ import { Component, OnInit,Input } from '@angular/core';
   templateUrl: './paging-header.component.html',
   styleUrls: ['./paging-header.component.scss']
 })
-export class PagingHeaderComponent  {
+export class PagingHeaderComponent implements OnInit  {
+  @Input() pageNumber: number;
+  @Input() pageSize: number;
+  @Input() totalCount: number;
+  ngOnInit() {
+    
+  }
   
-  @Input() pageNumber:number;
-  @Input() pageSize:number;
-  @Input() totalCount:number;
- 
-
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { BreadcrumbService } from 'xng-breadcrumb';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-section-header',
