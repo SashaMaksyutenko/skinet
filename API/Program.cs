@@ -53,4 +53,3 @@ app.UseSwaggerDocumentation();
 app.MapControllers();
 app.Run();
 
-//did i mess up the cors bit i though that this is right 
