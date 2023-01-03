@@ -19,7 +19,7 @@ import { BreadcrumbModule } from 'xng-breadcrumb';
       preventDuplicates:true
     })
   ],
-  exports:[SectionHeaderComponent,
-    NavBarComponent]
+  exports:[ NavBarComponent,SectionHeaderComponent
+   ]
 })
 export class CoreModule { }

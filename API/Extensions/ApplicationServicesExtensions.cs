@@ -12,6 +12,7 @@ namespace API.Extensions
         AddApplicationServices(this IServiceCollection Services)
         {
             Services.AddScoped<IProductRepository, ProductRepository>();
+            Services.AddScoped<IBasketRepository,BasketRepository>();
             Services
                 .AddScoped(typeof (IGenericRepository<>),
                 (typeof (GenericRepository<>)));

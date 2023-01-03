@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using AutoMapper;
 using API.Middleware;
 using API.Extensions;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,11 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<StoreContext>(x=> 
 x.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddSingleton<IConnectionMultiplexer>(c=>{
+    var configuration=ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"),true);
+    return ConnectionMultiplexer.Connect(configuration);
+
+});
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle//
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddApplicationServices();
