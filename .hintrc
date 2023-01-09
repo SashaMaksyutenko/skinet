@@ -13,7 +13,8 @@
           "text-align: -webkit-match-parent"
         ]
       }
-    ]
+    ],
+    "typescript-config/strict": "off"
   },
   "browserslist": [
     "defaults",

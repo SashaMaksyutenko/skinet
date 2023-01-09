@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy, ViewChild, ElementRef } from '@angular/core';
-import { IProduct } from '../shared/models/product';
+import { Product } from '../shared/models/product';
 import { ShopService } from './shop.service';
 import { HttpClient } from '@angular/common/http';
 import { IPagination } from '../shared/models/pagination';
@@ -18,7 +18,7 @@ export class ShopComponent implements OnInit {
   subBrand!: Subscription;
   subType!: Subscription;
   baseUrl = 'http://localhost:5183/api/';
-  products: IProduct[] = [];
+  products: Product[] = [];
   brands: IBrand[] = [];
   types:IType[]= [];
   shopParams=new ShopParams();
