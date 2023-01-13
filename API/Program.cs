@@ -5,6 +5,9 @@ using AutoMapper;
 using API.Middleware;
 using API.Extensions;
 using StackExchange.Redis;
+using Infrastructure.Identity;
+using Microsoft.AspNetCore.Identity;
+using Core.Entities.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +15,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<StoreContext>(x=> 
 x.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<AppIdentityDbContext>(x=>x.UseSqlite(builder.Configuration.GetConnectionString("IdentityConnection")));
 builder.Services.AddSingleton<IConnectionMultiplexer>(c=>{
     var configuration=ConfigurationOptions.Parse(builder.Configuration.GetConnectionString("Redis"),true);
     return ConnectionMultiplexer.Connect(configuration);
@@ -20,6 +24,7 @@ builder.Services.AddSingleton<IConnectionMultiplexer>(c=>{
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle//
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddApplicationServices();
+builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddSwaggerDocumentation();
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
 builder.Services.AddCors(opt =>
@@ -35,10 +40,14 @@ builder.Services.AddCors(opt =>
 var app = builder.Build();
 var services = builder.Services.BuildServiceProvider();
 var loggerFactory = services.GetRequiredService<ILoggerFactory>();
+var userManager=services.GetRequiredService<UserManager<AppUser>>();
+var identityContext=services.GetRequiredService<AppIdentityDbContext>();
 try
 {
     var context = services.GetRequiredService<StoreContext>();
     await context.Database.MigrateAsync();
+    await identityContext.Database.MigrateAsync();
+    await AppIdentityDbContextSeed.SeedUserAsync(userManager);
     await StoreContextSeed.SeedAsync(context,loggerFactory);
 }
 catch(Exception ex)
@@ -54,6 +63,7 @@ app.UseStatusCodePagesWithReExecute("/errors/{0}");
 app.UseHttpsRedirection();
 app.UseRouting();
 app.UseStaticFiles();
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseSwaggerDocumentation();
 app.MapControllers();
