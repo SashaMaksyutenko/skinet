@@ -28,7 +28,7 @@ export class ProductDetailsComponent implements OnInit {
     if(id)this.shopService.getProduct(+id).subscribe
     ({next:product=>{this.product=product;
     this.bcSevice.set('@productDetails',product.name);
-    this.basketService.basketSorce$.pipe(take(1)).subscribe({
+    this.basketService.basketSource$.pipe(take(1)).subscribe({
       next:basket=>{
         const item=basket?.items.find(x=>x.id===+id);
         if(item){
