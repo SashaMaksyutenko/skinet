@@ -35,6 +35,7 @@ namespace API.Controllers
             {
                 Email=user.Email,
                 Token=_tokenService.CreateToken(user),
+                //Token="this token",
                 DisplayName=user.DisplayName
             };
         }
@@ -63,6 +64,7 @@ namespace API.Controllers
             {
                 Email=user.Email,
                 Token=_tokenService.CreateToken(user),
+                //Token="this token",
                 DisplayName=user.DisplayName
             };
         }

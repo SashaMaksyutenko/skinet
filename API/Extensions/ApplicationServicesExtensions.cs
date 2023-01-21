@@ -1,40 +1,61 @@
-﻿using System;
-using API.Errors;
+﻿using API.Errors;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Infrastructure.Services;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.EntityFrameworkCore;
+using StackExchange.Redis;
+using AutoMapper;
 namespace API.Extensions
 {
     public static class ApplicationServicesExtensions
     {
-        public static IServiceCollection
-        AddApplicationServices(this IServiceCollection Services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services,
+            IConfiguration config)
         {
-            Services.AddScoped<ITokenService,TokenService>();
-            Services.AddScoped<IProductRepository, ProductRepository>();
-            Services.AddScoped<IBasketRepository,BasketRepository>();
-            Services.AddScoped(typeof (IGenericRepository<>),
-                (typeof (GenericRepository<>)));
-            Services
-                .Configure<ApiBehaviorOptions>(options =>
+
+            services.AddDbContext<StoreContext>(opt =>
+            {
+                opt.UseSqlite(config.GetConnectionString("DefaultConnection"));
+            });
+            services.AddSingleton<IConnectionMultiplexer>(c => 
+            {
+                var options = ConfigurationOptions.Parse(config.GetConnectionString("Redis"));
+                return ConnectionMultiplexer.Connect(options);
+            });
+            services.AddScoped<IBasketRepository, BasketRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IOrderService, OrderService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+           services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.Configure<ApiBehaviorOptions>(options =>
+            {
+                options.InvalidModelStateResponseFactory = actionContext =>
                 {
-                    options.InvalidModelStateResponseFactory = actionContext =>
+                    var errors = actionContext.ModelState
+                        .Where(e => e.Value.Errors.Count > 0)
+                        .SelectMany(x => x.Value.Errors)
+                        .Select(x => x.ErrorMessage).ToArray();
+
+                    var errorResponse = new ApiValidationErrorResponse
                     {
-                        var errors =
-                            actionContext
-                                .ModelState
-                                .Where(e => e.Value.Errors.Count > 0)
-                                .SelectMany(x => x.Value.Errors)
-                                .Select(x => x.ErrorMessage)
-                                .ToArray();
-                        var errorResponse =
-                            new ApiValidationErrorResponse { Errors = errors };
-                        return new BadRequestObjectResult(errorResponse);
+                        Errors = errors
                     };
+
+                    return new BadRequestObjectResult(errorResponse);
+                };
+            });
+            services.AddCors(opt =>
+            {
+                opt.AddPolicy("CorsPolicy", policy => 
+                {
+                    policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200");
                 });
-            return Services;
+            });
+
+            return services;
         }
     }
 }

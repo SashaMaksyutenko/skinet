@@ -8,10 +8,10 @@ namespace Infrastructure.Data
 {
     public class StoreContextSeed
     {
-        public static async Task SeedAsync(StoreContext context, ILoggerFactory loggerFactory)
+        public static async Task SeedAsync(StoreContext context)
         { 
-            try
-            {
+            
+            
                 if(!context.ProductBrands.Any())
                 {
                     var brandsData=File.ReadAllText("../Infrastructure/Data/SeedData/brands.json");
@@ -37,12 +37,8 @@ namespace Infrastructure.Data
                     var methods=JsonSerializer.Deserialize<List<DeliveryMethod>>(deliveryData);
                     context.DeliveryMethods.AddRange(methods);
                 }
-            }
-            catch(Exception ex)
-            {
-                var logger=loggerFactory.CreateLogger<StoreContextSeed>();
-                logger.LogError(ex.Message);
-            }
+                if (context.ChangeTracker.HasChanges()) await context.SaveChangesAsync();
+            
         }
     }
 }

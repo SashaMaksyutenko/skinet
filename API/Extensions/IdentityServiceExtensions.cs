@@ -29,7 +29,7 @@ namespace API.Extensions{
                     ValidateAudience=false
                 };
             });
-            //services.AddAuthorization();
+            services.AddAuthorization();
             return services;
 
         }

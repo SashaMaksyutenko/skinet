@@ -11,14 +11,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Data.Migrations
 {
     [DbContext(typeof(StoreContext))]
-    [Migration("20230117182529_OrderEntityAdded")]
-    partial class OrderEntityAdded
+    [Migration("20230120190722_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder.HasAnnotation("ProductVersion", "7.0.1");
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.2");
 
             modelBuilder.Entity("Core.Entities.OrderAggregate.DeliveryMethod", b =>
                 {
@@ -27,22 +27,15 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("DeliveryTime")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<double>("Price")
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<string>("ShortName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -57,21 +50,15 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("BuyerEmail")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("DeliveryMethodId")
+                    b.Property<int?>("DeliveryMethodId")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<DateTimeOffset>("OrderDate")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("PaymentIntentId")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Status")
@@ -93,10 +80,6 @@ namespace Infrastructure.Data.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
 
                     b.Property<int?>("OrderId")
                         .HasColumnType("INTEGER");
@@ -159,7 +142,6 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -174,7 +156,6 @@ namespace Infrastructure.Data.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -186,9 +167,7 @@ namespace Infrastructure.Data.Migrations
                 {
                     b.HasOne("Core.Entities.OrderAggregate.DeliveryMethod", "DeliveryMethod")
                         .WithMany()
-                        .HasForeignKey("DeliveryMethodId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DeliveryMethodId");
 
                     b.OwnsOne("Core.Entities.OrderAggregate.Address", "ShipToAddress", b1 =>
                         {
@@ -196,27 +175,21 @@ namespace Infrastructure.Data.Migrations
                                 .HasColumnType("INTEGER");
 
                             b1.Property<string>("City")
-                                .IsRequired()
                                 .HasColumnType("TEXT");
 
                             b1.Property<string>("FirstName")
-                                .IsRequired()
                                 .HasColumnType("TEXT");
 
                             b1.Property<string>("LastName")
-                                .IsRequired()
                                 .HasColumnType("TEXT");
 
                             b1.Property<string>("State")
-                                .IsRequired()
                                 .HasColumnType("TEXT");
 
                             b1.Property<string>("Street")
-                                .IsRequired()
                                 .HasColumnType("TEXT");
 
                             b1.Property<string>("ZipCode")
-                                .IsRequired()
                                 .HasColumnType("TEXT");
 
                             b1.HasKey("OrderId");
@@ -229,8 +202,7 @@ namespace Infrastructure.Data.Migrations
 
                     b.Navigation("DeliveryMethod");
 
-                    b.Navigation("ShipToAddress")
-                        .IsRequired();
+                    b.Navigation("ShipToAddress");
                 });
 
             modelBuilder.Entity("Core.Entities.OrderAggregate.OrderItem", b =>
@@ -246,14 +218,12 @@ namespace Infrastructure.Data.Migrations
                                 .HasColumnType("INTEGER");
 
                             b1.Property<string>("PictureUrl")
-                                .IsRequired()
                                 .HasColumnType("TEXT");
 
                             b1.Property<int>("ProductItemId")
                                 .HasColumnType("INTEGER");
 
                             b1.Property<string>("ProductName")
-                                .IsRequired()
                                 .HasColumnType("TEXT");
 
                             b1.HasKey("OrderItemId");
@@ -264,8 +234,7 @@ namespace Infrastructure.Data.Migrations
                                 .HasForeignKey("OrderItemId");
                         });
 
-                    b.Navigation("ItemOrdered")
-                        .IsRequired();
+                    b.Navigation("ItemOrdered");
                 });
 
             modelBuilder.Entity("Core.Entities.Product", b =>
