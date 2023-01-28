@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { CheckoutService } from '../checkout.service';
 import { DeliveryMethod } from 'src/app/shared/models/deliveryMethod';
+import { BasketService } from 'src/app/basket/basket.service';
 
 @Component({
   selector: 'app-checkout-delivery',
@@ -9,15 +10,16 @@ import { DeliveryMethod } from 'src/app/shared/models/deliveryMethod';
   styleUrls: ['./checkout-delivery.component.scss']
 })
 export class CheckoutDeliveryComponent implements OnInit {
-  @Input() checkoutForm?:FormGroup;
+  @Input() checkoutForm?:FormGroup = null;
   deliveryMethods:DeliveryMethod[]=[]
-  constructor(private checkOutService:CheckoutService){}
+  constructor(private checkOutService:CheckoutService,private basketService:BasketService){}
   ngOnInit(): void {
     this.checkOutService.getDeliveryMethods().subscribe
     ({
       next:dm=>this.deliveryMethods = dm 
     }) 
   }
+  setShippingPrice(deliveryMethod:DeliveryMethod){
+    this.basketService.setShippingPrice(deliveryMethod);
+  }
 }
-//its not hitting ht breackpoints in typescript so need to run it so that is dose
-//where to put breackpoint?
