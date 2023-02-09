@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { ReplaySubject,map, of } from 'rxjs';
+import { ReplaySubject,map, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Address, User } from '../shared/models/user';
 import { Router } from '@angular/router';
@@ -65,7 +65,8 @@ export class AccountService
     return this.http.get<boolean>(this.baseUrl + 'account/emailExists?email=' + email);
   }
   getUserAddress(){
-    return this.http.get<Address>(this.baseUrl+'account/address');
+    return this.http.get<Address>(this.baseUrl+'account/address')
+    .pipe(tap( console.log));
   }
   updateUserAddress(address:Address){
     return this.http.put(this.baseUrl+'account/address',address);

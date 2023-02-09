@@ -6,9 +6,10 @@ import {delay,finalize}from "rxjs/operators";
 @Injectable()
 export class LoadingInterceptor implements HttpInterceptor{
     constructor(private busyService:BusyService){}
-    intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<any>> {
+    intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
         if(request.url.includes('emailExists')||
-        request.method==='POST' && request.url.includes('orders')
+        request.method==='POST' && request.url.includes('orders') ||
+        request.method==='DELETE'
         ){
             return next.handle(request)
         }
@@ -18,6 +19,6 @@ export class LoadingInterceptor implements HttpInterceptor{
             finalize(()=>{
                 this.busyService.idle();
             })
-        );
+        )
     }
 } 
