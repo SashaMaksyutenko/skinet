@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 namespace Core.Entities.OrderAggregate
 {
     public class Order : BaseEntity
@@ -14,11 +15,11 @@ namespace Core.Entities.OrderAggregate
             OrderItems = orderItems;
             Subtotal = subtotal;
             PaymentIntentId=paymentIntentId;
-
         }
 
         public string BuyerEmail { get; set; }
         public DateTime OrderDate { get; set; } = DateTime.UtcNow;
+        [Required]
         public Address ShipToAddress { get; set; }
         public DeliveryMethod DeliveryMethod { get; set; }
         public IReadOnlyList<OrderItem> OrderItems { get; set; }

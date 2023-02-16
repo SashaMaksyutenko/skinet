@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
-
 namespace API.Extensions{
     public static class IdentityServiceExtensions
     {
@@ -13,7 +12,7 @@ namespace API.Extensions{
         {
             services.AddDbContext<AppIdentityDbContext>(opt =>
             {
-                opt.UseSqlite(config.GetConnectionString("IdentityConnection"));
+                opt.UseNpgsql(config.GetConnectionString("IdentityConnection"));
             });
             services.AddIdentityCore<AppUser>(opt=>{})
             .AddEntityFrameworkStores<AppIdentityDbContext>()
@@ -31,7 +30,6 @@ namespace API.Extensions{
             });
             services.AddAuthorization();
             return services;
-
         }
     }
 }
