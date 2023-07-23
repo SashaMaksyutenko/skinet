@@ -9,6 +9,7 @@ import { Address } from 'src/app/shared/models/user';
 import { Stripe, StripeCardCvcElement, StripeCardExpiryElement, StripeCardNumberElement, loadStripe } from '@stripe/stripe-js';
 import { firstValueFrom } from 'rxjs';
 import { OrderToCreate } from 'src/app/shared/models/order';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-checkout-payment',
   templateUrl: './checkout-payment.component.html',
@@ -30,7 +31,7 @@ export class CheckoutPaymentComponent implements OnInit{
   loading=false;
   constructor(private basketService:BasketService,private checkoutService:CheckoutService,private toastr: ToastrService, private router: Router){}
   ngOnInit(): void {
-    loadStripe('pk_test_51LzQzCDhXjHNMx1O5sZNpzS56Q1DXyxeX5NEI5OZAuMsPyZWE4oJaqjweJHHFFwyQU73dy6xBOoh3mljPQXX3ggW00MJCQ5sL1').then(stripe=>{
+    loadStripe(environment.stripePK).then(stripe=>{
       this.stripe=stripe;
       const elements=stripe?.elements();
       if(elements){

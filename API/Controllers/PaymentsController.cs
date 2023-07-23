@@ -33,7 +33,7 @@ namespace API.Controllers
         public async Task<ActionResult>StripeWebhook()
         {
             var json=await new StreamReader(Request.Body).ReadToEndAsync();
-            var stripeEvent=EventUtility.ConstructEvent(json,Request.Headers["Stripe-Signature"],_whSecret);
+            var stripeEvent=EventUtility.ConstructEvent(json,Request.Headers["Stripe-Signature"],_whSecret,throwOnApiVersionMismatch: false);
             PaymentIntent intent;
             Order order;
             switch(stripeEvent.Type)

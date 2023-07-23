@@ -1,7 +1,8 @@
+
 services:
 
   redis:
-    image: redis:latest
+    image: redis
     ports:
       - 6379:6379
     command: ["redis-server", "--appendonly", "yes"]
@@ -9,7 +10,7 @@ services:
       - redis-data:/data
 
   redis-commander:
-    image: rediscommander/redis-commander:latest
+    image: rediscommander/redis-commander
     environment:
       - REDIS_HOSTS=local:redis:6379
       - HTTP_USER=root
@@ -18,6 +19,7 @@ services:
       - 8081:8081
     depends_on:
       - redis
+      
   db:
     image: postgres
     environment:
@@ -26,7 +28,8 @@ services:
     ports:
       - 5432:5432
     volumes:
-      - postgres-data:/data 
+      - x-pg-data:/data 
+
 volumes:
   redis-data:
-  postgres-data:
+  x-pg-data:

@@ -56,6 +56,16 @@ namespace API.Extensions
                     policy.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:4200");
                 });
             });
+            //services.AddCors(options =>
+   // {
+        //options.AddPolicy("AllowSpecificOrigin",
+            //builder =>
+           // {
+               // builder.WithOrigins("http://165.22.65.226:80")
+                  //  .AllowAnyHeader()
+                   // .AllowAnyMethod();
+           // });
+   // });
 
             return services;
         }
